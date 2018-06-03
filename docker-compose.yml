@@ -1,0 +1,12 @@
+version: '3'
+services:
+  alpine-hugo:
+    image: andthensome/alpine-hugo-git-bash
+    env_file: .env
+    volumes:
+      - ./site:${SITE}
+    ports:
+      - "1313:1313"
+    working_dir: ${SITE}
+    entrypoint: ['hugo', 'server', '-D', '--bind', '0.0.0.0']
+# vi: sts ts=2
